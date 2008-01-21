@@ -69,7 +69,8 @@ Statyczna biblioteka libHX.
 %configure \
 	--enable-static
 
-%{__make}
+%{__make} \
+	V=1
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -95,7 +96,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libHX.so
 %{_libdir}/libHX.la
 %{_includedir}/libHX.h
-%{_pkgconfigdir}/libxHX.pc
+%{_pkgconfigdir}/libHX.pc
 
 %files static
 %defattr(644,root,root,755)
