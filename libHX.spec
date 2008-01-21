@@ -1,20 +1,17 @@
-
-Summary:	General-purpose library
+Summary:	J.Engelh's general-purpose library
+Summary(pl.UTF-8):	Biblioteka ogólnego przeznaczenia J. Engelha
 Name:		libHX
 Version:	1.10.2
 Release:	1
-License:	LGPL2 LGPL3 but NOT LATER
+License:	LGPL v2 or LGPL v3
 Group:		Libraries
-Source0:	http://jengelh.hopto.org/f/%{name}/%{name}-%{version}.tar.bz2
+Source0:	http://jengelh.hopto.org/f/libHX/%{name}-%{version}.tar.bz2
 # Source0-md5:	913d01d511c8378d7e563cfd3aa439ba
-URL:		http://jengelh.hopto.org/p/%{name}/
-#BuildRequires:	autoconf >= 2.50
-#BuildRequires:	automake
-#BuildRequires:	libtool >= 2:1.4d
+URL:		http://jengelh.hopto.org/p/libHX/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-A library for:
+J.Engelh's general-purpose library for:
 - A+R/B trees to use for lists or maps (associative arrays)
 - Deques (double-ended queues) (Stacks (LIFO) / Queues (FIFOs))
 - platform independent opendir-style directory access
@@ -25,6 +22,21 @@ A library for:
 - platform independent random number generator with transparent
   /dev/urandom support
 - various string, memory and zvec ops
+
+%description -l pl.UTF-8
+Biblioteka J. Engelha ogólnego przeznaczenia, obejmująca:
+- drzewa czerwono-czarne do list i tablic asocjacyjnych
+- kolejki o dwóch końcach (stosy LIFO/kolejki FIFO)
+- niezależny od platformy dostęp do katalogów w stylu opendir
+- niezależny od platformy dostęp do bibliotek współdzielonych w stylu
+  dlopen
+- łańcuchy znaków z automatycznym zarządzaniem pamięcią i bezpośrednim
+  dostępem
+- analizator opcji linii poleceń (argv)
+- analizator plików konfiguracyjnych w stylu powłoki sh
+- niezależny od platformy generator liczb losowych z przezroczystą
+  obsługą /dev/urandom
+- różne operacje na łańcuchach znaków, pamięci i strukturach zvec
 
 %package devel
 Summary:	libHX header files
@@ -54,11 +66,6 @@ Statyczna biblioteka libHX.
 %setup -q
 
 %build
-# supplied libtool is broken (no C++ libraries support)
-#%{__libtoolize}
-#%{__aclocal}
-#%{__autoconf}
-#%{__automake}
 %configure \
 	--enable-static
 
@@ -78,16 +85,18 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%doc doc/changelog.txt
+%attr(755,root,root) %{_libdir}/libHX.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libHX.so.10
 
 %files devel
 %defattr(644,root,root,755)
-%doc doc/*
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
-%{_includedir}/*.h
-%{_pkgconfigdir}/*.pc
+%doc doc/[!c]*.txt
+%attr(755,root,root) %{_libdir}/libHX.so
+%{_libdir}/libHX.la
+%{_includedir}/libHX.h
+%{_pkgconfigdir}/libxHX.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libHX.a
