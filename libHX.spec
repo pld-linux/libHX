@@ -1,13 +1,13 @@
 Summary:	J.Engelh's general-purpose library
 Summary(pl.UTF-8):	Biblioteka ogólnego przeznaczenia J. Engelha
 Name:		libHX
-Version:	1.10.2
+Version:	1.25
 Release:	1
 License:	LGPL v2 or LGPL v3
 Group:		Libraries
-Source0:	http://jengelh.hopto.org/f/libHX/%{name}-%{version}.tar.bz2
-# Source0-md5:	913d01d511c8378d7e563cfd3aa439ba
-URL:		http://jengelh.hopto.org/p/libHX/
+Source0:	http://jengelh.medozas.de/files/libHX/%{name}-%{version}.tar.bz2
+# Source0-md5:	6f19ce48a03f729c3cab32a42924ed2f
+URL:		http://jengelh.medozas.de/projects/libHX/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -88,7 +88,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc doc/changelog.txt
 %attr(755,root,root) %{_libdir}/libHX.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libHX.so.10
+%attr(755,root,root) %ghost %{_libdir}/libHX.so.14
 
 %files devel
 %defattr(644,root,root,755)
@@ -96,6 +96,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libHX.so
 %{_libdir}/libHX.la
 %{_includedir}/libHX.h
+%{_includedir}/%{name}
 %{_pkgconfigdir}/libHX.pc
 
 %files static
