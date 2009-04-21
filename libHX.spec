@@ -8,6 +8,7 @@ Group:		Libraries
 Source0:	http://jengelh.medozas.de/files/libHX/%{name}-%{version}.tar.bz2
 # Source0-md5:	c5f62e024d01c96955775f24810e2aef
 URL:		http://jengelh.medozas.de/projects/libHX/
+Patch0:	%{name}-gcc3.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -64,6 +65,7 @@ Statyczna biblioteka libHX.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure \
