@@ -1,12 +1,12 @@
 Summary:	J.Engelh's general-purpose library
 Summary(pl.UTF-8):	Biblioteka ogólnego przeznaczenia J. Engelha
 Name:		libHX
-Version:	2.9
+Version:	3.0
 Release:	1
 License:	LGPL v2 or LGPL v3
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/project/libhx/libHX/%{version}/%{name}-%{version}.tar.bz2
-# Source0-md5:	dadeeaa1ebcbb04d0223c8bb5fc4bbe2
+# Source0-md5:	8a800d98f44af2a31e9fe23555175327
 URL:		http://libhx.sourceforge.net/
 Patch0:	%{name}-gcc3.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -90,7 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc doc/changelog.txt
 %attr(755,root,root) %{_libdir}/libHX.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libHX.so.18
+%attr(755,root,root) %ghost %{_libdir}/libHX.so.22
 
 %files devel
 %defattr(644,root,root,755)
