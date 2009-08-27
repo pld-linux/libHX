@@ -5,7 +5,7 @@ Version:	3.0
 Release:	1
 License:	LGPL v2 or LGPL v3
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/project/libhx/libHX/%{version}/%{name}-%{version}.tar.bz2
+Source0:	http://dl.sourceforge.net/libhx/%{version}/%{name}-%{version}.tar.bz2
 # Source0-md5:	8a800d98f44af2a31e9fe23555175327
 URL:		http://libhx.sourceforge.net/
 Patch0:	%{name}-gcc3.patch
