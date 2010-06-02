@@ -9,6 +9,7 @@ Source0:	http://downloads.sourceforge.net/libhx/%{version}/%{name}-%{version}.ta
 # Source0-md5:	763be6db5e331e8d2f4fd7fb850c6b68
 URL:		http://libhx.sourceforge.net/
 BuildRequires:	pkgconfig
+BuildRequires:	tar >= 1:1.22
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
