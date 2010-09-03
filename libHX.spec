@@ -13,7 +13,7 @@ BuildRequires:	tar >= 1:1.22
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-J.Engelh's general-purpose library for:
+J. Engelh's general-purpose library for:
 - A+R/B trees to use for lists or maps (associative arrays)
 - Deques (double-ended queues) (Stacks (LIFO) / Queues (FIFOs))
 - platform independent opendir-style directory access
