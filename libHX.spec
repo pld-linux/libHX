@@ -8,6 +8,9 @@ Group:		Libraries
 Source0:	http://downloads.sourceforge.net/libhx/%{name}-%{version}.tar.xz
 # Source0-md5:	f5cad3eab84249f842e11836bf2b840c
 URL:		http://libhx.sourceforge.net/
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz >= 1:4.999.7
@@ -69,6 +72,10 @@ Statyczna biblioteka libHX.
 %setup -q
 
 %build
+%{__libtoolize}
+%{__aclocal} -I m4
+%{__autoconf}
+%{__automake}
 %configure \
 	--enable-static
 
