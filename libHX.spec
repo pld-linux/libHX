@@ -1,12 +1,12 @@
 Summary:	J.Engelh's general-purpose library
 Summary(pl.UTF-8):	Biblioteka ogólnego przeznaczenia J. Engelha
 Name:		libHX
-Version:	3.9.1
+Version:	3.10.1
 Release:	1
 License:	LGPL v2 or LGPL v3
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/libhx/%{name}-%{version}.tar.xz
-# Source0-md5:	f5cad3eab84249f842e11836bf2b840c
+# Source0-md5:	2c44fc5c5dee64088f8e733606451561
 URL:		http://libhx.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -88,6 +88,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -97,16 +99,14 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc doc/changelog.txt doc/libHX_Documentation.pdf
-%attr(755,root,root) %{_bindir}/hxdirstamp
 %attr(755,root,root) %{_libdir}/libHX.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libHX.so.25
+%attr(755,root,root) %ghost %{_libdir}/libHX.so.27
 %{_mandir}/man1/hxdirstamp.1*
 
 %files devel
 %defattr(644,root,root,755)
 %doc doc/[!c]*.txt
 %attr(755,root,root) %{_libdir}/libHX.so
-%{_libdir}/libHX.la
 %{_includedir}/libHX.h
 %{_includedir}/%{name}
 %{_pkgconfigdir}/libHX.pc
