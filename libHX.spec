@@ -2,7 +2,7 @@ Summary:	J.Engelh's general-purpose library
 Summary(pl.UTF-8):	Biblioteka ogólnego przeznaczenia J. Engelha
 Name:		libHX
 Version:	3.12.1
-Release:	1
+Release:	2
 License:	LGPL v2 or LGPL v3
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/libhx/%{name}-%{version}.tar.xz
