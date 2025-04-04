@@ -1,16 +1,18 @@
-Summary:	J.Engelh's general-purpose library
-Summary(pl.UTF-8):	Biblioteka ogólnego przeznaczenia J. Engelha
+Summary:	Useful collection of routines for C and C++ programming
+Summary(pl.UTF-8):	Przydatny zbiór funkcji do programowania w C i C++
 Name:		libHX
-Version:	3.12.1
-Release:	2
-License:	LGPL v2 or LGPL v3
+Version:	4.27
+Release:	1
+License:	LGPL v2.1+
 Group:		Libraries
-Source0:	http://downloads.sourceforge.net/libhx/%{name}-%{version}.tar.xz
-# Source0-md5:	de66ebb98e73ffd4831090257a7b9533
-URL:		http://libhx.sourceforge.net/
-BuildRequires:	autoconf
+#Source0Download: https://inai.de/files/libhx/?C=M;O=D
+Source0:	https://inai.de/files/libhx/%{name}-%{version}.tar.xz
+# Source0-md5:	f055c429ae890436faf1f7d8f24bd76a
+URL:		https://inai.de/projects/libhx/
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
-BuildRequires:	libtool
+BuildRequires:	libstdc++-devel >= 6:7
+BuildRequires:	libtool >= 2:2
 BuildRequires:	pkgconfig
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz >= 1:4.999.7
@@ -49,6 +51,7 @@ Summary:	libHX header files
 Summary(pl.UTF-8):	Pliki nagłówkowe libHX
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	libstdc++-devel >= 6:7
 
 %description devel
 libHX header files.
@@ -75,12 +78,13 @@ Statyczna biblioteka libHX.
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure \
+	--disable-silent-rules \
 	--enable-static
 
-%{__make} \
-	V=1
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -89,7 +93,6 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
-%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/libhx
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -99,20 +102,18 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc doc/changelog.txt doc/libHX_Documentation.pdf
+%doc COPYING doc/changelog.rst
 %attr(755,root,root) %{_libdir}/libHX.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libHX.so.28
-%{_libdir}/libHX_rtcheck.so
+%attr(755,root,root) %ghost %{_libdir}/libHX.so.32
 
 %files devel
 %defattr(644,root,root,755)
-%doc doc/[!c]*.txt
+%doc doc/[!c]*.rst
 %attr(755,root,root) %{_libdir}/libHX.so
 %{_includedir}/libHX.h
-%{_includedir}/%{name}
+%{_includedir}/libHX
 %{_pkgconfigdir}/libHX.pc
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libHX.a
-%{_libdir}/libHX_rtcheck.a
