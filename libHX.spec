@@ -2,7 +2,7 @@ Summary:	Useful collection of routines for C and C++ programming
 Summary(pl.UTF-8):	Przydatny zbiór funkcji do programowania w C i C++
 Name:		libHX
 Version:	4.27
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 #Source0Download: https://inai.de/files/libhx/?C=M;O=D
