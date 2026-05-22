@@ -1,21 +1,25 @@
+#
+# Conditional build:
+%bcond_without	static_libs	# static library
+
 Summary:	Useful collection of routines for C and C++ programming
 Summary(pl.UTF-8):	Przydatny zbiór funkcji do programowania w C i C++
 Name:		libHX
-Version:	4.27
-Release:	2
+Version:	4.28
+Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 #Source0Download: https://inai.de/files/libhx/?C=M;O=D
-Source0:	https://inai.de/files/libhx/%{name}-%{version}.tar.xz
-# Source0-md5:	f055c429ae890436faf1f7d8f24bd76a
+Source0:	https://inai.de/files/libhx/%{name}-%{version}.tar.zst
+# Source0-md5:	237e61be75e386ece852fa08354ba0c9
 URL:		https://inai.de/projects/libhx/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	libstdc++-devel >= 6:7
 BuildRequires:	libtool >= 2:2
 BuildRequires:	pkgconfig
-BuildRequires:	tar >= 1:1.22
-BuildRequires:	xz >= 1:4.999.7
+BuildRequires:	tar >= 1:1.31
+BuildRequires:	zstd
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -82,7 +86,7 @@ Statyczna biblioteka libHX.
 %{__automake}
 %configure \
 	--disable-silent-rules \
-	--enable-static
+	%{?with_static_libs:--enable-static}
 
 %{__make}
 
@@ -103,17 +107,19 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc COPYING doc/changelog.rst
-%attr(755,root,root) %{_libdir}/libHX.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libHX.so.32
+%{_libdir}/libHX.so.*.*.*
+%ghost %{_libdir}/libHX.so.32
 
 %files devel
 %defattr(644,root,root,755)
 %doc doc/[!c]*.rst
-%attr(755,root,root) %{_libdir}/libHX.so
+%{_libdir}/libHX.so
 %{_includedir}/libHX.h
 %{_includedir}/libHX
 %{_pkgconfigdir}/libHX.pc
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libHX.a
+%endif
